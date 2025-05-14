@@ -15,6 +15,8 @@ Este projeto implementa um conversor de moedas em tempo real utilizando uma API 
 - **npm** ou **yarn** para gerenciamento de pacotes
 - **API Key** para a API de conversão de moedas (disponível em [https://exchangerate-api.com/](https://exchangerate-api.com/))
 
+Impotante: para funcionamento integral é necessário um arquivo .env na raiz do projeto contendo os valores requeridos.
+
 ## Como executar o projeto
 ### Passo 1: Clonar o repositório
 
