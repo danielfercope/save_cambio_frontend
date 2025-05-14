@@ -11,26 +11,19 @@ Este projeto implementa um conversor de moedas em tempo real utilizando uma API 
 
 ## Requisitos
 
-- **Node.js** (versão 14 ou superior)
+- **Node.js** (versão 18 ou superior)
 - **npm** ou **yarn** para gerenciamento de pacotes
 - **API Key** para a API de conversão de moedas (disponível em [https://exchangerate-api.com/](https://exchangerate-api.com/))
 
 ## Como executar o projeto
-
 ### Passo 1: Clonar o repositório
-
-Clone este repositório para o seu computador:
 
 ```bash
 git clone https://github.com/danielfercope/save_cambio_frontend.git
 
 ### Passo 2: Instale as dependências do projeto utilizando npm ou yarn.
-
-```bash
 cd save_cambio_frontend
 npm install
 
 ### Passo 3: Inicie o projeto.
-
-```bash
 npm run dev
