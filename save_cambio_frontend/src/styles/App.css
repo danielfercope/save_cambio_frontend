@@ -1,0 +1,79 @@
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --primary-color: #0055ff;
+}
+
+body.dark {
+  --bg-color: #121212;
+  --text-color: #f1f1f1;
+  --primary-color: #3399ff;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.container {
+  max-width: 700px;
+  margin: auto;
+  padding: 2rem;
+  padding-top: 1rem; 
+}
+
+.header-container h1 {
+  margin-right: auto; 
+}
+
+h1 {
+  margin-bottom: 1rem;
+}
+
+button {
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+select,
+input {
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+select[multiple] {
+  height: 6rem;
+}
+
+.loading-message {
+  color: var(--primary-color);
+  margin: 10px 0;
+}
+
+.error-message {
+  color: #ff4444;
+  margin: 10px 0;
+}
