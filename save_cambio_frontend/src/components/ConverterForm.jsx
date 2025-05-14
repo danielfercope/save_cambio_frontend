@@ -31,7 +31,7 @@ export default function ConverterForm() {
       const timeoutId = setTimeout(() => controller.abort(), 5000);
 
       const res = await fetch(
-        `http://localhost:3001/convert?from=${fromCurrency}&to=${toCurrency}&amount=${amount}`,
+        `https://save-cambio-backend.onrender.com/convert?from=${fromCurrency}&to=${toCurrency}&amount=${amount}`,
         { signal: controller.signal }
       );
 
