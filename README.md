@@ -23,11 +23,8 @@ git clone https://github.com/danielfercope/save_cambio_frontend.git
 
 ### Passo 2: Instale as dependências do projeto utilizando npm ou yarn.
 
-```bash
 cd save_cambio_frontend
 npm install
 
 ### Passo 3: Inicie o projeto.
-
-```bash
 npm run dev
