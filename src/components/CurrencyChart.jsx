@@ -44,7 +44,7 @@ export default function CurrencyChart({ fromCurrency, toCurrency, width = "100%"
                 const formatDate = (date) => date.toISOString().split('T')[0];
 
                 const response = await fetch(
-                    `http://localhost:3001/chart?from=${fromCurrency}&to=${toCurrency}&start=${formatDate(startDate)}&end=${formatDate(endDate)}`
+                    `https://save-cambio-backend.onrender.com/chart?from=${fromCurrency}&to=${toCurrency}&start=${formatDate(startDate)}&end=${formatDate(endDate)}`
                 );
 
                 if (!response.ok) {
