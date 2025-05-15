@@ -27,7 +27,7 @@ export default function CurrencyChart({ fromCurrency, toCurrency, width = "100%"
     const [chartData, setChartData] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const [days, setDays] = useState(7); // Período padrão de 7 dias
+    const [days, setDays] = useState(7);
 
     useEffect(() => {
         if (!fromCurrency || !toCurrency) return;
@@ -98,9 +98,8 @@ export default function CurrencyChart({ fromCurrency, toCurrency, width = "100%"
             {
                 label: `Câmbio ${fromCurrency} para ${toCurrency}`,
                 data: chartData.map(item => item.value),
-                borderColor: 'rgb(75, 192, 192)',
-                backgroundColor: 'rgba(75, 192, 192, 0.5)',
-                tension: 0.1,
+                borderColor: 'rgba(241, 203, 102, 0.8)', 
+                backgroundColor: 'rgba(241, 203, 102, 0.8)', 
                 pointRadius: 5,
                 pointHoverRadius: 7
             }

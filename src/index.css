@@ -26,10 +26,10 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;     /* Centraliza horizontalmente */
+  align-items: center;     
   min-width: 320px;
   min-height: 100vh;
-  padding-top: 2rem;       /* Espaço no topo */
+  padding-top: 2rem;       
 }
 
 
@@ -67,6 +67,6 @@ button:focus-visible {
     color: #747bff;
   }
   button {
-    background-color: #f9f9f9;
+    background-color: #f1cb66;
   }
 }
