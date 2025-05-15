@@ -13,14 +13,19 @@ const currencyToCountry = {
 
 const currencyList = Object.keys(currencyToCountry);
 
-export default function ConverterForm() {
+export default function ConverterForm({ onCurrencyChange }) {
   const [fromCurrency, setFromCurrency] = useState('USD');
   const [toCurrency, setToCurrency] = useState('BRL');
   const [amount, setAmount] = useState('');
   const [converted, setConverted] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(false);
+
+  const handleCurrencyChange = () => {
+    if (onCurrencyChange) {
+      onCurrencyChange(fromCurrency, toCurrency);
+    }
+  };
 
   const handleConvert = async () => {
     setError(null);
@@ -28,19 +33,19 @@ export default function ConverterForm() {
 
     try {
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 5000);
+      const timeoutId = setTimeout(() => controller.abort(), 8000);
 
       const res = await fetch(
         `https://save-cambio-backend.onrender.com/convert?from=${fromCurrency}&to=${toCurrency}&amount=${amount}`,
         { signal: controller.signal }
       );
-
-      clearTimeout(timeoutId); 
+      clearTimeout(timeoutId);
 
       if (!res.ok) throw new Error(`Erro: ${res.statusText}`);
 
       const data = await res.json();
       setConverted(data.converted);
+      handleCurrencyChange();
     } catch (err) {
       setError(err.name === "AbortError"
         ? "A requisição demorou muito. Tente novamente."
@@ -50,13 +55,26 @@ export default function ConverterForm() {
     }
   };
 
+  const handleFromCurrencyChange = (e) => {
+    setFromCurrency(e.target.value);
+    handleCurrencyChange();
+  };
+
+  const handleToCurrencyChange = (e) => {
+    setToCurrency(e.target.value);
+    handleCurrencyChange();
+  };
+
   return (
     <div className="converter-form">
       <div className="row">
         <label>De:</label>
         <div className="currency-select">
           <img src={`https://flagcdn.com/24x18/${currencyToCountry[fromCurrency]}.png`} alt="" />
-          <select value={fromCurrency} onChange={e => setFromCurrency(e.target.value)}>
+          <select 
+            value={fromCurrency} 
+            onChange={handleFromCurrencyChange} 
+          >
             {currencyList.map(code => (
               <option key={code} value={code}>{code}</option>
             ))}
@@ -68,7 +86,10 @@ export default function ConverterForm() {
         <label>Para:</label>
         <div className="currency-select">
           <img src={`https://flagcdn.com/24x18/${currencyToCountry[toCurrency]}.png`} alt="" />
-          <select value={toCurrency} onChange={e => setToCurrency(e.target.value)}>
+          <select 
+            value={toCurrency} 
+            onChange={handleToCurrencyChange} // Atualizado
+          >
             {currencyList.map(code => (
               <option key={code} value={code}>{code}</option>
             ))}
@@ -78,10 +99,18 @@ export default function ConverterForm() {
 
       <div className="row">
         <label>Valor:</label>
-        <input type="number" value={amount} onChange={e => setAmount(e.target.value)} />
+        <input 
+          type="number" 
+          value={amount} 
+          onChange={e => setAmount(e.target.value)} 
+          placeholder="Digite o valor"
+        />
       </div>
 
-      <button style={{ marginLeft: '-200px' }} onClick={handleConvert}>Converter</button>
+      <button style={{ marginLeft: '-200px' }} onClick={handleConvert}>
+        Converter
+      </button>
+
       {isLoading && (
         <div className="loading-message">Convertendo...</div>
       )}
@@ -95,7 +124,6 @@ export default function ConverterForm() {
           <strong>Resultado:</strong> {Number(converted).toFixed(2)} {toCurrency}
         </div>
       )}
-
     </div>
   );
 }

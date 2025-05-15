@@ -15,7 +15,6 @@ const currencyList = Object.keys(currencyToCountry);
 
 export default function CurrencySelector({ selected, onChange }) {
   const [open, setOpen] = useState(false);
-
   const toggleDropdown = () => setOpen(!open);
   const handleSelect = (code) => {
     onChange(code);

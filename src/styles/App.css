@@ -77,3 +77,21 @@ select[multiple] {
   color: #ff4444;
   margin: 10px 0;
 }
+
+.chart-container {
+  padding: 1rem;
+  background: var(--background-color);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+  .chart-container {
+    padding: 0.5rem;
+  }
+  
+  .chart-wrapper {
+    height: 300px !important;
+  }
+}
